@@ -1,0 +1,30 @@
+   Sub Stock_Cost ():
+   
+   Range("I1") = "Ticker"
+    Range("J1") = "Yearly Change"
+    Range("K1") = "Percentage Change"
+    Range("L1") = "Total Stock Volume"
+    
+    
+    Range("A2:A753002").AdvancedFilter Action:=xlFilterCopy, CopytoRange:=Range("I2:I753002")
+    Range("I2:I753002").RemoveDuplicates Columns:=1, Header:=xlNo
+    
+    For i = 2 To 7503002
+    
+    Ticker = Cells(i, 9).Value
+	
+       If Cells(i, 1).Value <> Cells(i + 1, 1).Value Then
+              Last = Cells(i, 6)
+               Var = Last - First
+        Cells(i, 10).Value = Var
+                O = Cells(i + 1, 3).Value
+        Cells(i, 9).Value = O
+                        
+   
+
+    If Cells("I2") = Cells("A2").Value Then Cells("J2").formulas = "Sum(G2:G753002).value"
+    
+     End If
+    Next
+    
+    End Sub
